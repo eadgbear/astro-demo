@@ -9,6 +9,10 @@ def hello_world():
 def hello_world_2():
     print("Hello World 2")
 
+@task
+def hello_world_3():
+    print("Hello World 3")
+
 @dag(
     dag_id='hello_world',
     start_date=datetime(2023, 1, 1),
@@ -19,7 +23,8 @@ def hello_world_2():
 def hello_world_dag():
     hello_world_task = hello_world()
     hello_world_2_task = hello_world_2()
+    hello_world_3_task = hello_world_3()
 
-    hello_world_task >> hello_world_2_task
+    hello_world_task >> hello_world_2_task >> hello_world_3_task
 
 hello_world_dag()
